@@ -1,4 +1,5 @@
 import { useState } from "react";
+import stateCityObj from "../Common/state_city.json"
 
 const searchTeamData=(searchText,listOfTeamMembers,setIsSearched)=>{
     //filtering data for multiple fields
@@ -31,6 +32,11 @@ const SearchComponent =({listOfTeamMembers , setFilteredData , setIsSearched})=>
                 <input id="searchBox" placeholder="search" 
                        value={searchText}
                        onChange={settingValueForSetSearchText}></input>
+                
+                <select value={""}>
+                    {Object.keys(stateCityObj).map(state=><option key ={state}
+                    value = {state}>{state}</option>)}
+                </select>
                 <button>Search</button>
             </form>
     </div>

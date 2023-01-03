@@ -2,6 +2,7 @@ import { useState,useEffect } from "react";
 import data from "../Common/data.json"
 import SearchComponent from "./SearchComponent";
 import CardContainerComponent from "./CardContainerComponent";
+import NoResultsComponent  from "./NoResultsComponent";
 
 const SearchTeamMembersComponent=()=>{
     const [listOfTeamMembers,setListOfTeamMembers]=useState([]);
