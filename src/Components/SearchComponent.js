@@ -14,6 +14,7 @@ const searchTeamData=(searchText,listOfTeamMembers,setIsSearched)=>{
 
 const SearchComponent =({listOfTeamMembers , setFilteredData , setIsSearched})=>{
     const [searchText,setSearchText] = useState("");
+    const [stateName,setStateName] = useState("Andhra Pradesh");
 
     const settingValueForSetSearchText=(e)=>{
         setSearchText(e.target.value);
@@ -33,7 +34,9 @@ const SearchComponent =({listOfTeamMembers , setFilteredData , setIsSearched})=>
                        value={searchText}
                        onChange={settingValueForSetSearchText}></input>
                 
-                <select value={""}>
+                <select value={stateName} onChange = {
+                    (e)=>{setStateName(e.target.value); }
+                    }>
                     {Object.keys(stateCityObj).map(state=><option key ={state}
                     value = {state}>{state}</option>)}
                 </select>
