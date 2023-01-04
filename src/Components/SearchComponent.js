@@ -33,24 +33,33 @@ const SearchComponent =({listOfTeamMembers , setFilteredData , setIsSearched})=>
                     setFilteredData(filteredData);
                 }
             }>
-                <input id="searchBox" placeholder="search" 
+                <div className="search">
+                <input placeholder="search" 
                        value={searchText}
                        onChange={settingValueForSetSearchText}></input>
+                </div>
                 
+                <div className="search">
                 <select value={stateName} onChange = {
                     (e)=>{setStateName(e.target.value); }
                     }>
                     {Object.keys(stateCityObj).map(state=><option key ={state}
                     value = {state}>{state}</option>)}
                 </select>
+                </div>
 
-                <select value={cityName} onChange={
+                <div className="search">
+                <select id = "CitiesDropdown" value={cityName} onChange={
                     (e)=>{setCityName(e.target.value);}
                     }>
                     {listOfCities?.map(city=><option key={city}
                     value = {city}>{city}</option>)}
                 </select>
+                </div>
+
+                <div className="search">
                 <button>Search</button>
+                </div>
             </form>
     </div>
     );

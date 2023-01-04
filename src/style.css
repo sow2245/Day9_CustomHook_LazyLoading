@@ -17,13 +17,9 @@
     flex-wrap: wrap;
 }
 
-#searchBox
-{
-    margin: 8px;
-}
-
 .search{
     margin-top: 13px;
+    width: 20%;
 }
 
 .noResults{
@@ -36,4 +32,8 @@
 
 .searchDetails{
     padding: 0;
+}
+
+#CitiesDropdown{
+    max-width: 500%;
 }
