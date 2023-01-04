@@ -2,15 +2,20 @@ import { useState } from "react";
 import stateCityObj from "../Common/state_city.json";
 import useCities from "../Hooks/useCities.js";
 
-const searchTeamData=(searchText,listOfTeamMembers,setIsSearched)=>{
-    //filtering data for multiple fields
-      const setValue = (searchText != "" || searchText != null);
+const searchTeamData=(searchText,listOfTeamMembers,setIsSearched,cityName)=>{
+      //filtering data for multiple fields
+      const setValue = (searchText != "" || searchText != null || cityName != null);
       setIsSearched(setValue);
-      const searchTextToLowerCase=searchText.toLowerCase();
-      return listOfTeamMembers?.filter((team)=>
-         (team.name.toLowerCase().includes(searchTextToLowerCase)
-             || team.location?.toLowerCase()?.includes(searchTextToLowerCase))
-      );
+      let copyOfData = listOfTeamMembers;
+      if(searchText != "" || searchText != null){
+        copyOfData = copyOfData?.filter((team) => 
+                            (team.name.toLowerCase().includes(searchText.toLowerCase())));
+      }
+      if(cityName != null){
+        copyOfData = copyOfData?.filter((team) => 
+                            (team.location?.toLowerCase()?.includes(cityName.toLowerCase())));
+      }
+      return copyOfData;
 };
 
 const SearchComponent =({listOfTeamMembers , setFilteredData , setIsSearched})=>{
@@ -29,7 +34,7 @@ const SearchComponent =({listOfTeamMembers , setFilteredData , setIsSearched})=>
             onSubmit={
                 (e)=>{
                     e.preventDefault();
-                    const filteredData = searchTeamData(searchText,listOfTeamMembers,setIsSearched);
+                    const filteredData = searchTeamData(searchText,listOfTeamMembers,setIsSearched,cityName);
                     setFilteredData(filteredData);
                 }
             }>
