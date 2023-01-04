@@ -1,8 +1,8 @@
 import { useState,useEffect } from "react";
 import data from "../Common/data.json"
-import SearchComponent from "./SearchComponent";
-import CardContainerComponent from "./CardContainerComponent";
-import NoResultsComponent  from "./NoResultsComponent";
+import SearchComponent from "./SearchComponent.js";
+import CardContainerComponent from "./CardContainerComponent.js";
+import NoResultsComponent  from "./NoResultsComponent.js";
 
 const SearchTeamMembersComponent=()=>{
     const [listOfTeamMembers,setListOfTeamMembers]=useState([]);

@@ -1,12 +1,14 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDom from "react-dom/client";
 import AppLayoutComponent from "./Components/AppLayoutComponent.js";
-import ErrorComponent  from "./Components/ErrorComponent";
-import SearchTeamMembersComponent from "./Components/SearchTeamMembersComponent";
-import TeamMemberComponent from "./Components/TeamMemberComponent";
-import AboutUsComponent from "./Components/AboutUsComponent";
-import ProfileComponent from "./Components/ProfileComponent";
+import ErrorComponent  from "./Components/ErrorComponent.js";
+import SearchTeamMembersComponent from "./Components/SearchTeamMembersComponent.js";
+import TeamMemberComponent from "./Components/TeamMemberComponent.js";
+import ProfileComponent from "./Components/ProfileComponent.js";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+const AboutUsComponent = lazy(()=>import("./Components/AboutUsComponent"));
+const SearchTeamMembersComponent = lazy(()=>import("./Components/SearchTeamMembersComponent.js"))
 
 const appRouter = createBrowserRouter([
     {
@@ -16,7 +18,7 @@ const appRouter = createBrowserRouter([
         children : [
             {
                 path : "/searchteammembers",
-                element : <SearchTeamMembersComponent/>
+                element : <Suspense fallback={<h1>loading...</h1>}><SearchTeamMembersComponent/></Suspense>
             },
             {
                 path : "/teammember/:id",
@@ -24,7 +26,7 @@ const appRouter = createBrowserRouter([
             },
             {
                 path : "/aboutus",
-                element : <AboutUsComponent/>,
+                element : <Suspense fallback={<h1>loading...</h1>}><AboutUsComponent/></Suspense>,
                 children : [
                     {
                         path : "profile",
